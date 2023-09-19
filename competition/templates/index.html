@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block head %}
+<link href="{% static 'index.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+<!-- about our system -->
+<div class="first-section flex flex-row items-center relative">
+    <div class="description w-5/12 mx-40">
+        <h1 class="text-4xl font-bold text-white py-8">Best Way To Vote !</h1>
+        <p class="text-white font-medium">Goodbye to the old voting methods and Google Form,
+            Now you can vote for the team you choose in any competition through our
+             official website, Having an audience account will give the team you choose a
+              point while the judges will give them 10 points!</p>
+    </div>
+
+    
+    <div class="w-5/12  voiting-photo">
+        <img src="{% static 'images/voiting.svg' %}"  alt="voiting">
+    </div>
+    <span class="svg-wave absolute bottom-0 left-0"> <img  src="{%  static 'images/wave.svg' %}"> </span> 
+</div>
+
+
+
+<!-- competition section -->
+<div class="competition-section my-16">
+    <div class="flex justify-center items-center flex-col">
+         <p class="text-3xl font-bold text-black">Our Competitions</p>
+         <span class="line"></span>
+     </div>
+
+    <!-- CARDS : -->
+    <div class="flex flex-row flex-wrap justify-center align-items my-1"> <!-- cards container -->
+        <!-- here we will put for loop to make the crads from backend -->
+        <a href="">
+            <div class="bg-white h-64 w-80 rounded-xl border-2 border-slate-200 drop-shadow-xl mx-4 my-4">
+                <img src="https://i.ytimg.com/vi/Lp7TQjWcqRM/maxresdefault.jpg" alt="img" class="p-2.5 rounded-t-3xl"> <!--fetch img from backend-->
+                <p class="text-center py-3 text-2xl font-bold">Event title</p> <!-- fetch name from backend -->
+            </div>
+        </a>   
+    </div>
+</div>
+
+
+<!-- our team : -->
+<div class="my-16"> 
+    <div class="flex justify-center items-center flex-col">
+        <p class="text-3xl font-bold text-black">Our Team</p>
+        <span class="line"></span>
+    </div>
+
+    <div class="text-center my-10">
+        <div class="flex justify-center items-center flex-row">
+
+            <div class="team-detail px-16"> <img src=" https://cdn.80.lv/api/upload/content/42/images/6319adf16e04e/widen_1840x0.jpg" class="mx-auto w-60 h-60 rounded-full"/>
+              <h4>Hussein Luay</h4>
+              <p>Frontend developer</p>
+            </div>
+          
+            <div class="team-detail px-16"> <img src="https://cdn.80.lv/api/upload/content/91/images/6319ae09022f0/widen_920x0.jpg" class="mx-auto w-60 h-60 rounded-full"/>
+              <h4>Ameer Mazin</h4>
+              <p>Backend developer</p>
+            </div>
+          
+
+            <div class="team-detail px-16"> <img src="https://www.denofgeek.com/wp-content/uploads/2022/07/Milly-Alcot-as-Rhaenyra-in-House-of-the-Dragon.jpeg?fit=1400%2C788" class="mx-auto w-60 h-60  rounded-full"/>
+              <h4>Elaf Abid</h4>
+              <p>Backend developer</p>
+            </div>
+          
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
