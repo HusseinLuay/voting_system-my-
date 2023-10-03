@@ -1,18 +1,14 @@
  /* first section : */
  .first-section{
     background: linear-gradient(to left, #3a8dfa, #c8d9ee);
-    margin-top: 70px;
+	width: 100%;
+	
 }
-.first-section .voiting-photo{
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-.first-section .description{
-    margin-bottom: 140px;
-}
+
 .voiting-photo{
     margin-right: 120px;
 }
+
 
 
 /* line : */

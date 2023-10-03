@@ -7,7 +7,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
     var targetSection = document.getElementById(selectedCompetition);
   
     if (targetSection) {
-      window.location.hash = selectedCompetition; // Add the hash to the URL
+      // window.location.hash = selectedCompetition; // Add the hash to the URL
       targetSection.scrollIntoView(); // Scroll to the selected competition
     }
   });

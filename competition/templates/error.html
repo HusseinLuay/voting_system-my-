@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind -->
+    <title>Computiq - Error </title>
+    <style>
+.btn{
+border: 3px solid #3a8dfa;
+padding-right: 20px;
+padding-left: 20px;
+padding-top: 3px;
+padding-bottom: 5px;
+color: #3a8dfa;
+font-weight: 700;
+}
+.btn:hover{
+background-color: #3a8dfa ;
+color: white;
+transition: 0.4s;
+}
+    </style>
+</head>
+
+<body>
+    <div class="flex justify-center items-center flex-col">
+      <img src="{% static 'images/error.svg' %}" alt="error-img" class="w-5/12 ">  
+      <form action="" method="" class="mt-0">
+        <input type="submit" value="Home Page" class="btn">
+      </form>
+    </div>
+    
+</body>
+
+</html>

@@ -6,31 +6,32 @@
 {% endblock %}
 
 {% block body %}
-<div class="first-section flex flex-row items-center relative mb-8">
-    <div class="description w-5/12 mx-40">
-        <h1 class="text-4xl font-bold text-white py-8">Choose The Competition :</h1>
-        <form id="searchForm">
-            <select id="competitionSelector" name="competition"  class="appearance-none border border-gray-300 rounded-full p-2 pl-4 pr-36 focus:outline-none focus:ring focus:border-blue-300">
+<div class="first-section flex md:flex-row justify-between items-center relative">
+    <div class="w-5/12 md:mx-40 mb-40 ml-10">
+        <h1 class="lg:text-4xl md:text-2xl text-xs font-bold text-white pt-8 pb-4 overflow-visible">Choose The Competition :</h1>
+        <form id="searchForm" class="">
+            <select id="competitionSelector" name="competition"  class="appearance-none border border-gray-300 rounded-full py-2 pl-4 pr-8 overflow-visible md:pr-24 lg:pr-36  focus:outline-none focus:ring focus:border-blue-300">
               <!-- Populate this dynamically with backend data -->
-              <option value="competition1">Competition 1</option> <!-- we will get the value from backend -->
-              <option value="competition2">Competition 2</option>
+              {% for result in results %}
+              <option value="{{ result.competition.name }}">{{ result.competition.name }}</option>
+              {% endfor %}
             </select><br>
             <button type="submit" class="search-btn mt-4 rounded-full font-semibold bg-blue-500">Search</button>
           </form>
     </div>
 
     
-    <div class="w-5/12  result-photo">
-        <img src="{% static 'images/result.svg' %}"  alt="result" class="h-96">
+    <div class="w-4/12 md:mt-7 lg:mb-5 md:mr-24 mr-0 mt-4 mb-36 result-photo">
+        <img src="{% static 'images/result.svg' %}"  alt="result" class="w-11/12">
     </div>
     <span class="svg-wave absolute bottom-0 left-0"> <img  src="{%  static 'images/wave.svg' %}"> </span> 
 </div>
 
 
-
+{% for result in results %}
 <div class="flex justify-between items-center flex-col my-8">
-    <p class="text-3xl font-bold text-black" id="competition1">competition name</p> <!--from backend (id and name) -->
-    <span class="line"></span>
+    <p class="text-3xl font-bold text-black overflow-hidden" id="{{ result.competition.name }}">{{ result.competition.name }}</p> <!--from backend (id and name) -->
+    <span class="line overflow-visible"></span>
     <table class="centered-table mb-16">
         <tr class="thead">
             <th class="text-white">Team Name</th>
@@ -38,16 +39,15 @@
         </tr>
 
 
-        <tr> <!-- delet the second tr and make for loop to full data from backend -->
-            <td>Team A</td>
-            <td>10</td>
-        </tr>
+        {% for team_result in result.team_results %}
         <tr>
-            <td>Team B</td>
-            <td>8</td>
+            <td>{{ team_result.team.name }}</td>
+            <td>{{ team_result.points }}</td>
         </tr>
+        {% endfor %}
     </table>
 </div>
+{% endfor %}
 
 <script src="{% static 'results.js' %}"></script>
 

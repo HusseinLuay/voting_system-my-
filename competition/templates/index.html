@@ -8,17 +8,18 @@
 {% block body %}
 
 <!-- about our system -->
-<div class="first-section flex flex-row items-center relative">
-    <div class="description w-5/12 mx-40">
+<div class="first-section flex lg:flex-row flex-col items-center relative">
+    <div class="lg:mb-36 mb-10 w-6/12 mx-40">
         <h1 class="text-4xl font-bold text-white py-8">Best Way To Vote !</h1>
         <p class="text-white font-medium">Goodbye to the old voting methods and Google Form,
             Now you can vote for the team you choose in any competition through our
-             official website, Having an audience account will give the team you choose a
-              point while the judges will give them 10 points!</p>
+             official website, Only judges can log in through special accounts given to them,
+              and 10 points will be scored for the team that the judges vote for.
+               As for the audience, they can vote without logging in, and this will give the team that was voted for one point.</p>
     </div>
 
     
-    <div class="w-5/12  voiting-photo">
+    <div class="lg:w-6/12 w-11/12  lg:mt-8 lg:mb-5 mt-1 mb-36 mr-20">
         <img src="{% static 'images/voiting.svg' %}"  alt="voiting">
     </div>
     <span class="svg-wave absolute bottom-0 left-0"> <img  src="{%  static 'images/wave.svg' %}"> </span> 
@@ -27,21 +28,23 @@
 
 
 <!-- competition section -->
-<div class="competition-section my-16">
+<div class="my-16">
     <div class="flex justify-center items-center flex-col">
-         <p class="text-3xl font-bold text-black">Our Competitions</p>
-         <span class="line"></span>
+         <p class="text-3xl font-bold text-black overflow-hidden">Our Competitions</p>
+         <span class="line overflow-visible"></span>
      </div>
 
     <!-- CARDS : -->
     <div class="flex flex-row flex-wrap justify-center align-items my-1"> <!-- cards container -->
         <!-- here we will put for loop to make the crads from backend -->
-        <a href="">
+        {% for competition in competitions %}
+        <a href="{% url 'vote' id=competition.id %}">
             <div class="bg-white h-64 w-80 rounded-xl border-2 border-slate-200 drop-shadow-xl mx-4 my-4">
-                <img src="https://i.ytimg.com/vi/Lp7TQjWcqRM/maxresdefault.jpg" alt="img" class="p-2.5 rounded-t-3xl"> <!--fetch img from backend-->
-                <p class="text-center py-3 text-2xl font-bold">Event title</p> <!-- fetch name from backend -->
+                <img src="{{competition.image}}" alt="img" class="p-2.5 rounded-t-3xl"> <!--fetch img from backend-->
+                <p class="text-center py-3 text-2xl font-bold">{{competition.name}}</p> <!-- fetch name from backend -->
             </div>
-        </a>   
+        </a>  
+        {% endfor %} 
     </div>
 </div>
 
@@ -49,16 +52,16 @@
 <!-- our team : -->
 <div class="my-16"> 
     <div class="flex justify-center items-center flex-col">
-        <p class="text-3xl font-bold text-black">Our Team</p>
-        <span class="line"></span>
+        <p class="text-3xl font-bold text-black overflow-hidden">Our Team</p>
+        <span class="line overflow-visible"></span>
     </div>
 
     <div class="text-center my-10">
-        <div class="flex justify-center items-center flex-row">
+        <div class="flex justify-center items-center lg:flex-row flex-col">
 
             <div class="team-detail px-16"> <img src=" https://cdn.80.lv/api/upload/content/42/images/6319adf16e04e/widen_1840x0.jpg" class="mx-auto w-60 h-60 rounded-full"/>
               <h4>Hussein Luay</h4>
-              <p>Frontend developer</p>
+              <p>Fullstack developer</p>
             </div>
           
             <div class="team-detail px-16"> <img src="https://cdn.80.lv/api/upload/content/91/images/6319ae09022f0/widen_920x0.jpg" class="mx-auto w-60 h-60 rounded-full"/>

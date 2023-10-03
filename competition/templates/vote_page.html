@@ -13,21 +13,25 @@
 </div>
 
 <div class="mt-8 flex justify-center items-center flex-col">
-    <p class="text-3xl font-bold text-black">Vote For Your Favorite Team</p>
-    <span class="line"></span>
+    <p class="lg:text-3xl md:text-xl text-lg font-bold text-black overflow-hidden">Vote For Your Favorite Team</p>
+    <span class="line overflow-visible"></span>
 </div>
 
 
 <!-- cards  -->
 <div class="flex flex-row flex-wrap justify-center align-items mb-16"> 
         <!-- here we will put for loop to fetch data from backend  -->
-        <div class="bg-white h-80 w-80 rounded-xl border-2 border-slate-200 drop-shadow-xl mx-4 my-4 flex flex-col justify-center items-center">
-            <img src="https://i.ytimg.com/vi/Lp7TQjWcqRM/maxresdefault.jpg" alt="img" class="p-2.5 rounded-t-3xl">
-            <p class="text-center py-3 text-2xl font-bold">Team Name(project)</p>
-            <form action="" method="POST">
-                <input type="submit" value="VOTE" class="mt-2 vote-btn font-bold">
+        {% for team in teams %}
+        <div class="bg-white h-80 w-80 rounded-xl border-2 border-slate-200 drop-shadow-xl mx-4 my-4 flex flex-col justify-center items-center overflow-hidden">
+            <img src="{{team.image}}" alt="img" class="px-2.5 rounded-t-3xl">
+            <p class="text-center py-3 text-sm font-semibold overflow-hidden">{{team.name}}</p>
+            <form action="{% url 'vote' id=competition.id %}" method="POST" class="overflow-hidden">
+                {% csrf_token %}
+                <input type="hidden" name="team_id" value="{{ team.id }}">
+                <input type="submit" value="VOTE" class="mt-2 mv-4 vote-btn font-bold overflow-hidden">
             </form>
         </div> 
+        {% endfor %}
 </div>
 
 {% endblock %}

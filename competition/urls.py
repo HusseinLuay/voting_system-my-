@@ -3,5 +3,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('' , views.index , name="index") , #if not thing comes after 127.0.0.1 go to the urls of our app (competition)
+    path('login', views.login_user, name='login'),
+    path('logout', views.logout_user, name='logout'),
+    path('' , views.index , name="index") , 
+    path('vote/<int:id>' , views.vote , name="vote") ,
+    path('result' , views.result , name="result")
 ]

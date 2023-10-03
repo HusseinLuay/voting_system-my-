@@ -1,17 +1,7 @@
 .first-section{
     background: linear-gradient(to left, #3a8dfa, #c8d9ee);
-    margin-top: 70px;
 }
-.first-section .result-photo{
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-.first-section .description{
-    margin-bottom: 140px;
-}
-.result-photo{
-    margin-right: 90px;
-}  
+  
 
 .search-btn{
     /* border: 3px solid #3a8dfa; */
@@ -39,6 +29,8 @@
 	border-bottom: 2px dashed #3a8dfa;
 	margin-left: -75px;
 }
+
+
 
 /* table */
 .centered-table {
