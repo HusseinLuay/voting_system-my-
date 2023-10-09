@@ -5,6 +5,7 @@ from django.db import IntegrityError
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import *
+from django.db.models import Sum
 
 def index(request):
     competitions = Competition.objects.all()
@@ -43,7 +44,7 @@ def vote(request, id):
     if request.method == 'POST':
         if 'voted_for_competition_{}'.format(id) in request.session:
             return redirect('index')
-        team_id = request.POST.get('team_id')  # Assuming you have an input field with name 'team_id' in your form
+        team_id = request.POST.get('team_id')  
         team = Team.objects.get(pk=team_id)
 
         if user.is_authenticated:
@@ -51,7 +52,7 @@ def vote(request, id):
         else:
             points = 1
 
-        # Check if the user has already voted for this team
+        # Check if the team have record of voting in the DB 
         existing_vote = Vote.objects.filter(team=team).first()
 
         if existing_vote:
@@ -66,7 +67,6 @@ def vote(request, id):
     return render(request, 'vote_page.html', {'competition': competition, 'teams': teams})
 
 
-from django.db.models import Sum
 def result(request):
     competitions = Competition.objects.all()
     results = []
